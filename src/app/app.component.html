@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<!--<h1>-->
+  <!--{{title}}-->
+<!--</h1>-->
+<!--<ul>-->
+  <!--<li *ngFor="let item of collection1 | paginate: { itemsPerPage: 10, currentPage: p }"> {{item}} </li>-->
+<!--</ul>-->
+
+<!--<pagination-controls (pageChange)="p1 = $event"></pagination-controls>-->
+
+
+<ul class="meal-list">
+  <li *ngFor="let meal of asyncMeals | async | paginate: { id: 'server', itemsPerPage: perPage, currentPage: p, totalItems: total }">
+    {{ meal }}
+  </li>
+</ul>
+
+<div class="has-text-centered">
+  <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+  <pagination-controls [maxSize]=5 (pageChange)="getPage($event)" id="server"></pagination-controls>
+</div>
